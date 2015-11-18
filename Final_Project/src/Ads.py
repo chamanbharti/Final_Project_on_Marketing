@@ -23,26 +23,24 @@ sheetname2 = sys.argv[4]
 savename = sys.argv[5]
 
 def main():
+	# Uses the load_data function to load the first dataframe into a variable
 	Salesdata = load_data (dataframe = Salesdf, sheetname = sheetname1)
-	print(Salesdata.head())
-	
+	# Uses the load_data function to load the second dataframe into a variable
 	Adsdata = load_data (dataframe = Adsdf, sheetname = sheetname2)
-	print(Adsdata.head())
-	
+	#Uses the merging_data function to merge the two dataframes previously loaded
 	Combineddata = merging_data(Salesdata, Adsdata)
-	print(Combineddata.head())
-	
+	#Uses the lm function to print the linear regression analysis results of the merged data of 2 columns 
 	Summary = lm(Combineddata.Ad_Cost, Combineddata.Sales_in_CAD, Combineddata)
 	print(Summary)
-	
+	#Uses the plot_lm function to plot the linear regression line of the first subplot
 	Plotlm = plot_lm(Combineddata.Ad_Cost, Combineddata.Sales_in_CAD)
-	
+	# Uses the plot function to create a plot of the data
 	plotting = plot(Combineddata.Ad_Cost, Combineddata.Sales_in_CAD, Combineddata.New_or_Returning, plotname = savename)
 	print(plotting)
-	
+	#Uses the lm function to print the linear regression analysis results of the merged data of 2 different columns 
 	Summary1 = lm(Combineddata.Ad_Cost, Combineddata.New_or_Returning, Combineddata)
-	print(Summary)
-	
+	print(Summary1)
+	#Uses the plot_lm function to plot the linear regression line of the second subplot
 	Plotlm1 = plot_lm(Combineddata.Ad_Cost, Combineddata.New_or_Returning)
 	
 

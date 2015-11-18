@@ -21,16 +21,12 @@ savename = sys.argv[3]
 def main():
 
 	Salesdata = load_data (dataframe = Salesdf, sheet = sheetname)
-	print(Salesdata.head())
 	
 	CleanedData = clean_data(Salesdata)
-	print(CleanedData.head())
 
 	Type_R = downsample_data(CleanedData)
-	print(Type_R.head())
 	
 	Type_N = downsample_data1(CleanedData)
-	print(Type_N.head())
 	
 	plotting = plot(Type_R.Date_of_Order, Type_R.Sales_in_CAD, Type_N.Date_of_Order, Type_N.Sales_in_CAD, savename)
 	print (plotting)
