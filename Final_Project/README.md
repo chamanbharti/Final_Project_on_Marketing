@@ -2,28 +2,18 @@ Final Project on Marketing
 Miriam Baumann
 2015-11-09
 
-Ten Minute Plan
+Ten Minute Plan: 
 
-This program is used to create a marketing plan for a company. It is able to visualize and analyze sales data by using different functions. 
-The sales data includes main variables such as date of order, sales amount  and cost of ads, as well as more detailed variables that may 
-differ in sales data from different companies. 
+The code in this repository can be used to analyze past sales data of a company. This can help create an 
+effective marketing plan for the company. 
+The code, loads, organizes, visualises, plots and analyzes multiple datframes by using different functions.  
 
-![Alt text](Flowchart_Final_Project.jpg)
+The following flowchart explains what the code will do in more detail:  
 
-Current Issues: 
-In Plot 1: I am currently having issues running linear regression statistical test on plot 1. I get an error telling me that a name is 
-not defined and I dont know how to fix that.
- 
-In plot 2: I plotted Sales across time to see whether there is a correlation between month and Sales. I have the plot but i dont know how 
-to statitically analyze it to find whether there is a correlation between month and Sales.
- 
-In Plot 3: In plot 3 I am trying to plot a violinplot of the different fields instead of the boxplots of the fields, but somehow this is
-not working for me. I dont know how to plot multiple violin plots on one plot. Within plot 3 I am also trying to define a function called 
-businessyear. This function is supposed to take out all dates in a specific business year and return these rows in a new table. Any suggestions
-on how this could work?
+![Alt text](images/Flowchart_TenMPlan.jpg)
 
-In Plot 4: I have a plot of sales from new customers and returning customers over time. I did a t-test on the data, however I am not sure 
-if this is the right test to run here. The p value i get is 0.0 and i feel like this test isnt really telling me anything. 
-If you have any suggestions on what other tests i could run that are more significant? Or is there a way of plotting a best fit line for 
-each new customers and returning customers and then comparing them? 
-
+The code is seperated across two python scripts; the frist script creates plot 1 and the second script creates plot 2. 
+The Shell script which describes how to use the python scripts, is named MarketingProject.sh, and can be found in the 
+doc directory. It can be opened through Git Bash with a simple text editor by typing: nano MarketingProject.sh. When calling
+the shell script you must make sure you are in the directory that the shell script is located, otherwise you must provide 
+the filepath. 

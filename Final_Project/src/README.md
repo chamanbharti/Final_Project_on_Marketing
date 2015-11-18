@@ -1,1 +1,1 @@
-Collection of source codes
+This directory holds all ipython notebooks and python scripts used for the project.

@@ -1,1 +1,1 @@
-Additional documentation of the project
+This directory holds all written documentation on the project. 

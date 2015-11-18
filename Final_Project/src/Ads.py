@@ -1,5 +1,8 @@
 # Miriam Baumann, 2015-11-16
-# Loads and cleans a dataframe in the form of an excel file.
+# This script loads two excel dataframes, cleans and merges them , and then outputs a
+# figure with two subplots showing the relationship between cost of ads and
+# Sales to New customers/ Number of New customers. The plots are analyzed using 
+# regression analysis and show a linear regression line. 
 
 # Importing Libraries
 import pandas as pd
@@ -8,6 +11,7 @@ import numpy as np
 import sys
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+import csv
 
 #Defining the variables
 Salesdf = sys.argv[1]
@@ -88,18 +92,18 @@ def merging_data(dataframe1, dataframe2):
 	
 	
 def lm (x, y, data):
-    '''This function calculates the linear regression of a scatter plot, where the 
-    independent input variable is x and the dependant input variable is y.
-    This function will print a summary of the results in a table.'''
+	'''This function calculates the linear regression of a scatter plot, where the 
+	independent input variable is x and the dependant input variable is y.
+	This function will print a summary of the results in a table.'''
     # Running linear regression on the plot 
-    lm = sm.formula.ols(formula = 'y ~ x', data = data).fit()
-    # generating a new data frame of the x variable, to produce a list of numbers from 1 to the same length as the x variable
-    x_new = pd.DataFrame({'newdata' : range(1,len(x)+1)})
+	lm = sm.formula.ols(formula = 'y ~ x', data = data).fit()
+	# generating a new data frame of the x variable, to produce a list of numbers from 1 to the same length as the x variable
+	x_new = pd.DataFrame({'newdata' : range(1,len(x)+1)})
     # using the predict function to predict the y values based on x
-    y_preds = lm.predict(x_new)
-
-    # printing the summary of the linear model
-    print(lm.summary())
+	y_preds = lm.predict(x_new)
+	
+	# printing the summary of the linear model
+	print(lm.summary())
 
 	
 
@@ -125,32 +129,34 @@ def plot_lm (x, y):
 	
 
 def plot(x, y, z, plotname):
-    '''This function will make 2 scatter plots, taking in data from three columns of a dataframe.
-    The produced figure will be saved to a filename specified by the user in the input'''
+	'''This function will make 2 scatter plots, taking in data from three columns of a dataframe.
+	The produced figure will be saved to a filename specified by the user in the input'''
     #Defining the size of the figure
-    plt.figure(figsize=(13,5))
+	plt.figure(figsize=(13,5))
+	#Defining an overarching title
+	plt.suptitle('Relationship between Cost of Ads and Sales to New Customers/ Number of New Customers', fontsize=14)
     
-    #Making the fist subplot
-    plt.subplot(1,2,1)
+	#Making the first subplot
+	plt.subplot(1,2,1)
     # Creating a scatter plot from the dataframe
-    plt.scatter(x, y)
+	plt.scatter(x, y)
     # Defining the y axis label
-    plt.ylabel(y.name)
+	plt.ylabel('Sales to New Customers (CAD)')
     # Defining the x-axis label 
-    plt.xlabel(x.name)
-    plot_lm(x, y)
+	plt.xlabel(x.name)
+	plot_lm(x, y)
     
     # Making the second subplot
-    plt.subplot(1,2,2)
-    plt.scatter(x, z)
+	plt.subplot(1,2,2)
+	plt.scatter(x, z)
     # Defining the y axis label
-    plt.ylabel(z.name)
+	plt.ylabel('Number of New Customers')
     # Defining the x-axis label 
-    plt.xlabel(x.name)
+	plt.xlabel(x.name)
     # Adding the linear model function, to plot the regression line on the plot
-    plot_lm(x, z)
+	plot_lm(x, z)
     
     #Saving the plot to a new file 
-    plt.savefig(plotname)
+	plt.savefig(plotname)
 
 main()

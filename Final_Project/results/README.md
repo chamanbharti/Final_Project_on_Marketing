@@ -1,1 +1,1 @@
-Computational experiments performed on data
+This directory hold all results obtained from the code.
